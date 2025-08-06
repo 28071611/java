@@ -1,0 +1,42 @@
+import java.util.Scanner;
+public class Main{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+        for(int i=0;i<n-1;i++){
+        for(int j=0;j<n-i-1;j++){
+            if(arr[j]>arr[j+1]){
+                int temp=arr[j];
+                arr[j]=arr[j+1];
+                arr[j+1]=temp;
+            }
+        }
+        }
+        for(int i=0;i<n;i++){
+            System.out.print(""+arr[i]);
+        }
+        int value=sc.nextInt();
+        int low=0,high=n-1;
+        int mid;
+        boolean found=false;
+        while(low<=high){
+            mid=(low+high)/2;
+            if(arr[mid]==value){
+                System.out.print("Element found at the "+mid);
+                found=true;
+                break;
+            }else if(arr[mid]<value){
+                low=mid+1;
+            }else{
+                high=mid-1;
+            }
+        }
+            if(!found){
+                System.out.print("Not found in the array");
+            }
+    }
+}
